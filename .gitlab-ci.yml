@@ -1,0 +1,121 @@
+stages:
+  - databases_build
+  - api_build
+  - app_build
+
+variables:
+  IMAGE_POSTGRES: ${CI_REGISTRY_USER}/${CI_REGISTRY_NAMESPACE}:postgres
+  IMAGE_REDIS: ${CI_REGISTRY_USER}/${CI_REGISTRY_NAMESPACE}:redis
+  IMAGE_FASTAPI_DEV: ${CI_REGISTRY_USER}/${CI_REGISTRY_NAMESPACE}:fastapi_dev
+  IMAGE_FASTAPI_PRO: ${CI_REGISTRY_USER}/${CI_REGISTRY_NAMESPACE}:fastapi_pro
+  IMAGE_VUE_DEV: ${CI_REGISTRY_USER}/${CI_REGISTRY_NAMESPACE}:vue_dev
+  IMAGE_VUE_PRO: ${CI_REGISTRY_USER}/${CI_REGISTRY_NAMESPACE}:vue_pro
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: never
+    - when: always
+
+postgres_build:
+  stage: databases_build
+  image: docker
+  services:
+    - docker:dind
+  tags:
+    - docker
+  rules:
+    - if: $CI_COMMIT_BRANCH == "development"
+    - if: $CI_COMMIT_BRANCH == "main"
+      allow_failure: true
+  script:
+    - echo ${CI_REGISTRY_TOKEN} | docker login -u ${CI_REGISTRY_USER} --password-stdin
+    - cd postgres
+    - docker build -t $IMAGE_POSTGRES --build-arg="POSTGRES_USER=${POSTGRES_USER}"
+      --build-arg="POSTGRES_DB=${POSTGRES_DB}" --build-arg="POSTGRES_PASSWORD=${POSTGRES_PASSWORD}" .
+    - docker push $IMAGE_POSTGRES
+
+redis_build:
+  stage: databases_build
+  image: docker
+  services:
+    - docker:dind
+  tags:
+    - docker
+  rules:
+    - if: $CI_COMMIT_BRANCH == "development"
+    - if: $CI_COMMIT_BRANCH == "main"
+      allow_failure: true
+  script:
+    - echo ${CI_REGISTRY_TOKEN} | docker login -u ${CI_REGISTRY_USER} --password-stdin
+    - cd redis
+    - docker build -t $IMAGE_REDIS --build-arg="REDIS_PASSWORD=${REDIS_PASSWORD}" .
+    - docker push $IMAGE_REDIS
+
+# Backend builds
+
+fastapi_dev_build:
+  stage: api_build
+  image: docker
+  services:
+    - docker:dind
+  tags:
+    - docker
+  rules:
+    - if: $CI_COMMIT_BRANCH == "development"
+      allow_failure: true
+  script:
+    - echo ${CI_REGISTRY_TOKEN} | docker login -u ${CI_REGISTRY_USER} --password-stdin
+    - cd api/
+    - docker build -t $IMAGE_FASTAPI_DEV .
+    - docker push $IMAGE_FASTAPI_DEV
+
+fastapi_pro_build:
+  stage: api_build
+  image: docker
+  services:
+    - docker:dind
+  tags:
+    - docker
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      allow_failure: true
+  script:
+    - echo ${CI_REGISTRY_TOKEN} | docker login -u ${CI_REGISTRY_USER} --password-stdin
+    - cd api/
+    - docker build -t $IMAGE_FASTAPI_PRO .
+    - docker push $IMAGE_FASTAPI_PRO
+
+# Frontend builds
+
+vue_dev_build:
+  stage: app_build
+  image: docker
+  services:
+    - docker:dind
+  tags:
+    - docker
+  rules:
+    - if: $CI_COMMIT_BRANCH == "development"
+      allow_failure: true
+  script:
+    - echo ${CI_REGISTRY_TOKEN} | docker login -u ${CI_REGISTRY_USER} --password-stdin
+    - cd app/
+    - docker build -t $IMAGE_VUE_DEV .
+    - docker push $IMAGE_VUE_DEV
+
+vue_pro_build:
+  stage: app_build
+  image: docker
+  services:
+    - docker:dind
+  tags:
+    - docker
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      allow_failure: true
+  script:
+    - echo ${CI_REGISTRY_TOKEN} | docker login -u ${CI_REGISTRY_USER} --password-stdin
+    - cd app/
+    - docker build -t $IMAGE_VUE_PRO .
+    - docker push $IMAGE_VUE_PRO

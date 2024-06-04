@@ -1,0 +1,8 @@
+{
+  "schemas": [
+    {
+      "ammount": 10000.0,
+      "currency": "euro"
+    }
+  ]
+}

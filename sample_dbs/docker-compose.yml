@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  cache:
+    image: redis
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --loglevel debug --requirepass app4auctions
+    volumes:
+      - cache:/data
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=app4auctions
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  cache:
+    driver: local
+  db:
+    driver: local

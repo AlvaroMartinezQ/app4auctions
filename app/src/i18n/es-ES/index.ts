@@ -1,0 +1,111 @@
+export default {
+  apptitle: 'App4Auctions',
+  welcome: 'Bienvenid@',
+  language: 'Idioma',
+  short_lang: 'ES',
+  company: 'APP4AUCTIONS',
+  account: {
+    title: 'Cuenta',
+    login: 'Entrar en su cuneta',
+    login_short: 'Acceder',
+    email: 'Email',
+    password: 'Contraseña',
+    invalid_credentials: 'Las credenciales no son validas',
+    create: 'Crear una nueva cuenta',
+    name: 'Nombre',
+    surname: 'Apellido(s)',
+    id_num: 'Numero de identificacion DNI/NIE',
+    country: 'Pais',
+    address: 'Direccion',
+    phone: 'Numero de contacto',
+    create_go: 'Crear',
+    repeat_password: 'Repetir contraseña',
+    old_password: 'Contraseña actual',
+    new_password: 'Nueva contraseña',
+    repeat_new_password: 'Repite la nueva contraseña',
+    pwd_error: 'Las contraseñas no coinciden',
+    activating: 'Activando su cuenta...',
+    invalid_activation: 'Numero de identificacion de usuario invalido.',
+    success_activation: 'Tu cuenta ha sido activada! Ya puedes iniciar sesion.',
+    update_btn: 'Actualizar',
+    update_ok: 'Sus campos se han actualizado correctamente',
+    update_failed: 'Sus campos no se han podido actualizar, porfavor intente de nuevo',
+    auctions: 'Tus subastas',
+    auction_edit: 'Solo puedes actualizar una subasta si no ha comenzado',
+    bids: 'Tus pujas',
+    bid_detail: 'Haz click en el boton ver para mostrar la puja en detalle'
+  },
+  forms: {
+    required_field: 'Este campo es obligatorio',
+    user_search: 'Palabras clave',
+    search_method: 'Metodo de busqueda',
+    input_value: 'Introduce un valor',
+    clear_search: 'Limpiar busqueda',
+    search: 'Buscar!'
+  },
+  api: {
+    error: 'Algo ha ido mal...',
+    loading: 'Cargando...'
+  },
+  auction: {
+    title: 'Subasta',
+    desc: 'Subastas',
+    no_active: 'No hay subastas activas en este momento en la web.',
+    time_left: 'Tiempo restante',
+    time_units: {
+      seconds: 'segundos',
+      minutes: 'minutos',
+      hours: 'horas',
+      days: 'dias'
+    },
+    not_found: 'La subasta {id} no se ha encontrado o ha sido eliminada.',
+    ref: 'Referencia de subasta',
+    init_price: 'Precio inicial',
+    highest_bid: 'Mayor puja',
+    search: 'Busca subastas por texto',
+    search_relevance: 'Relevancia en la busqueda',
+    price_currency: 'Moneda',
+    start_time: 'Fecha inicio',
+    finish_time: 'Fecha fin',
+    tags: 'Etiquetas',
+    new: {
+      btn: 'Crear',
+      create: 'Crea una nueva subasta',
+      title: 'Titulo',
+      description: 'Descripcion',
+      tags_desc: 'Escribe tu etiqueta y pulsa espacio.',
+    },
+    update: {
+      title: 'Actializa tu subasta',
+      btn: 'Actualizar',
+    },
+    not_started: 'Esta subasta no ha empezado.',
+    view_data: 'Ver datos de la subasta',
+    finished: 'La subasta ha finalizado',
+    calculating_time: 'Calculando tiempo restante...'
+  },
+  bid: {
+    title: 'Puja',
+    quantity: 'Cantidad',
+    perform: 'Haz una puja',
+    ref: 'Referencia de la puja',
+    list: 'Lista de pujas',
+    offer_quantity: 'Precio ofrecida',
+    bad_quantity: 'El valor de tu puja tiene que ser mayor al valor de la puja actual de mayor valor'
+  },
+  not_found: 'Ooops, nada por aqui...',
+  created: 'Fecha',
+  none: 'Ninguna',
+  actions: 'Acciones',
+  modal: {
+    acc_created: 'Cuenta creada',
+    acc_created_txt: 'Deberias de recibir un email en los siguientes minutos para activar tu cuenta. Despues de haberla activado, podras entrar en ella.',
+    cleared: 'Eliminados los resultados igual a 0',
+    search_clear: 'Busqueda eliminada'
+  },
+  nothing: 'Nada que mostrar por el momento',
+  wallet: {
+    id: 'ID del monedero',
+    currency: 'Moneda'
+  }
+};

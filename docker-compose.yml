@@ -1,0 +1,63 @@
+version: "3.8"
+services:
+  cache:
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --loglevel debug --requirepass app4auctions
+    volumes:
+      - cache-vol:/data
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=app4auctions
+    ports:
+      - "5432:5432"
+    volumes:
+      - database-vol:/var/lib/postgresql/data
+  api:
+    build: ./api
+    depends_on:
+      - db
+      - cache
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=app4auctions
+      - POSTGRES_SERVER=db
+      - POSTGRES_PORT=5432
+      - REDIS_PASSWORD=app4auctions
+      - REDIS_SERVER=cache
+      - REDIS_PORT=6379
+      - SECRET_KEY=e7cfa7a968c3c9db696c7e8188d7e56f81c3fb46a6b822415ff4e0d42071efbb
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=60
+      - ACTIVATE_ACC_URL=http://localhost:3000/account/activate/
+      - CELERY_TOKEN_NAME=celery-key
+      - CELERY_TOKEN_VALUE=mytoken
+    ports:
+      - "5000:5000"
+      - "5555:5555"
+  app:
+    build:
+      context: ./app
+      target: "production-stage"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ".:/app"
+    environment:
+      - VITE_BACKEND_URL=http://api:5000
+      - VITE_WS_ON=on
+      - VITE_WS_MARKETPLACE_URL=ws://api:5000/marketplace/ws/
+      - VITE_WS_AUCTION_URL=ws://api:5000/marketplace/room/
+    depends_on:
+      - api
+volumes:
+  cache-vol:
+    driver: local
+  database-vol:
+    driver: local

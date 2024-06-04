@@ -1,0 +1,20 @@
+// app global css in SCSS form
+
+@font-face {
+  font-family: sweetfont;
+  src: url(./fonts/Bright-Tropical.woff);
+}
+
+@font-face {
+  font-family: richland;
+  src: url(./fonts/TheRichland.woff);
+}
+
+// declare a class which apply font-faces
+.sweetfont {
+  font-family: 'sweetfont';
+}
+
+.richland {
+  font-family: 'richland';
+}

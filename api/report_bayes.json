@@ -1,0 +1,80 @@
+{
+  "0": {
+    "phrase": "Pokemon Charizard old gold card",
+    "precision": 0.748,
+    "recall": 0.4456983187752419,
+    "f1-score": 0.43478658525067915
+  },
+  "1": {
+    "phrase": "Gold necklace eighteen karat gold",
+    "precision": 0.7,
+    "recall": 0.404667677168211,
+    "f1-score": 0.37939733243411905
+  },
+  "2": {
+    "phrase": "Ferrari Gold car",
+    "precision": 0.66,
+    "recall": 0.4325947835751757,
+    "f1-score": 0.4094853265450086
+  },
+  "3": {
+    "phrase": "Gold medieval sword",
+    "precision": 0.712,
+    "recall": 0.46916148058016566,
+    "f1-score": 0.43433967345132246
+  },
+  "4": {
+    "phrase": "Old painting",
+    "precision": 0.724,
+    "recall": 0.44413589413589416,
+    "f1-score": 0.4405729260105123
+  },
+  "5": {
+    "phrase": "Porcelain decorative car",
+    "precision": 0.788,
+    "recall": 0.5291496598639455,
+    "f1-score": 0.5257630499368836
+  },
+  "6": {
+    "phrase": "Basketball sticker card",
+    "precision": 0.728,
+    "recall": 0.3722469891219891,
+    "f1-score": 0.36191960405617857
+  },
+  "7": {
+    "phrase": "Military style rolex watch",
+    "precision": 0.728,
+    "recall": 0.46320638820638826,
+    "f1-score": 0.43142641005091165
+  },
+  "8": {
+    "phrase": "Porsche",
+    "precision": 0.724,
+    "recall": 0.44681426229831783,
+    "f1-score": 0.43658971647138567
+  },
+  "9": {
+    "phrase": "Collector cards",
+    "precision": 0.708,
+    "recall": 0.44736959736959747,
+    "f1-score": 0.43629886180132443
+  },
+  "10": {
+    "phrase": "Military badge",
+    "precision": 0.776,
+    "recall": 0.46467521082905694,
+    "f1-score": 0.45097574867758783
+  },
+  "11": {
+    "phrase": "Vietnam propaganda poster",
+    "precision": 0.716,
+    "recall": 0.43553858422279484,
+    "f1-score": 0.4138530703435267
+  },
+  "12": {
+    "phrase": "Luke Skywalker",
+    "precision": 0.708,
+    "recall": 0.4223603260774313,
+    "f1-score": 0.40197916404073697
+  }
+}
