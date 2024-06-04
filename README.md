@@ -2,6 +2,8 @@
 
 Welcome to the App4Auctions README.
 
+This project was copied from its original repository in (GitLab App4Auctions)[https://gitlab.com/AlvaroMartinezQ/app4auctions]
+
 ## How-to: install the application for _local_ develop - the cool kid way :sunglasses:
 
 - **Disclaimer**: Docker needs to be installed in your system.
